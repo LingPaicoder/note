@@ -37,3 +37,68 @@ print(len(dog))
 
 print('ABC'.lower())
 
+class MyObject(object):
+    def __init__(self):
+        self.x = 9
+
+    def power(self):
+        return self.x * self.x
+
+obj = MyObject()
+print(hasattr(obj, 'x'))
+print(obj.x)
+print(hasattr(obj, 'y'))
+print(setattr(obj, 'y', 11))
+print(hasattr(obj, 'y'))
+print(getattr(obj, 'y'))
+
+print(getattr(obj, 'z', 404))
+print(hasattr(obj, 'power'))
+print(getattr(obj, 'power'))
+fn = getattr(obj, 'power')
+print(fn)
+print(fn())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
