@@ -3,6 +3,12 @@ package com.lpcoder.stackAndQueue;
 import java.util.Stack;
 
 /**
+ * 设计一个有getMin功能的栈
+ * 要求：
+ *  1. pop、push、getMin操作的时间复杂度都是O(1)
+ *  2. 设计的栈类型可以使用现成的栈结构
+ * 要点：空间复杂度←→时间复杂度
+ *
  * @author liurenpeng
  * @date Created in 19-1-25
  */

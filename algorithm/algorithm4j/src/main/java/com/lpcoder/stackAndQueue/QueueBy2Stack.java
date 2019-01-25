@@ -3,6 +3,12 @@ package com.lpcoder.stackAndQueue;
 import java.util.Stack;
 
 /**
+ * 由两个栈组成的队列
+ * 要求：用两个栈实现队列，支持队列的基本操作（add、poll、peek）
+ * 要点：栈（先进后出），队列（先进先出）。**负负得正**。
+ *  1. 栈1数据导入栈2时必须是全量导入
+ *  2. 栈2从栈1导数据时必须自身为空
+ *
  * @author liurenpeng
  * @date Created in 19-1-25
  */
