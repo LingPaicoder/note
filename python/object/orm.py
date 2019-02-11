@@ -73,3 +73,6 @@ u.save()
 
 
 
+u = User(id = 12346, name = 'Micheal', email = 'testZ@orm.org', password =
+         'my-pwd')
+u.save()

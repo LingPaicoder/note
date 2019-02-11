@@ -15,19 +15,29 @@ public class ReverseStack {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        reverseStack(stack);
+        reverse(stack);
         System.out.println(stack.pop());
         System.out.println(stack.pop());
         System.out.println(stack.pop());
     }
 
-    public static void reverseStack(Stack<Integer> stack) {
-        /*if (stack.isEmpty()) {
+    public static int getAndRemoveLastElement(Stack<Integer> stack) {
+        int result = stack.pop();
+        if (stack.isEmpty()) {
+            return result;
+        }
+        int last = getAndRemoveLastElement(stack);
+        stack.push(result);
+        return last;
+    }
+
+    public static void reverse(Stack<Integer> stack) {
+        if (stack.isEmpty()) {
             return;
         }
-        Integer data = stack.pop();
-        reverseStack(stack);
-        stack.push(data);*/
+        int i = getAndRemoveLastElement(stack);
+        reverse(stack);
+        stack.push(i);
     }
 
 }
