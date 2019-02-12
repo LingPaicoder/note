@@ -17,7 +17,8 @@ public class OrderStack {
         stack.push(5);
         stack.push(1);
         System.out.println(stack);
-        orderStack(stack);
+        //orderStack(stack);
+        sortStackByStack(stack);
         System.out.println(stack.peek());
         System.out.println(stack);
     }
@@ -45,6 +46,27 @@ public class OrderStack {
         } else {
             stack.push(max);
             return elem;
+        }
+    }
+
+    /**
+     * 另一种解法
+     */
+    public static void sortStackByStack(Stack<Integer> stack) {
+        Stack<Integer> helper = new Stack<>();
+        while (!stack.isEmpty()) {
+            int cur = stack.pop();
+            if (helper.isEmpty() || cur <= helper.peek()) {
+                helper.push(cur);
+                continue;
+            }
+            while (!helper.isEmpty() && helper.peek() < cur) {
+                stack.push(helper.pop());
+            }
+            helper.push(cur);
+        }
+        while (!helper.isEmpty()) {
+            stack.push(helper.pop());
         }
     }
 }
