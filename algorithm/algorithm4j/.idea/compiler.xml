@@ -10,8 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="com.daojia.dsf.wrs.outter" target="1.8" />
-      <module name="com.daojia.dsf.wrs.third" target="1.8" />
+      <module name="algorithm4j" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
