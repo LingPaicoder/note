@@ -31,7 +31,8 @@ public class CatDogQueue {
         System.out.println(queue.pets);
         System.out.println("---debug end---");
 
-        //queue.pollAll();
+        queue.pollAll();
+        System.out.println(queue.pets);
 
         /*queue.pollDog();
         System.out.println(queue.pets);*/
@@ -53,32 +54,35 @@ public class CatDogQueue {
         }
     }
 
-    public void pollDog() {
-        while (!dogs.isEmpty()) {
-            Pet firstDog = dogs.poll();
-            pets.remove(firstDog);
-            System.out.println(firstDog.getType());
+    public Pet pollDog() {
+        if (dogs.isEmpty()) {
+            throw new RuntimeException("dog queue is empty");
         }
+        Pet dog = dogs.poll();
+        pets.remove(dog);
+        return dog;
     }
 
-    public void pollCat() {
-        while (!cats.isEmpty()) {
-            Pet firstCat = cats.poll();
-            pets.remove(firstCat);
-            System.out.println(firstCat.getType());
+    public Pet pollCat() {
+        if (cats.isEmpty()) {
+            throw new RuntimeException("cat queue is empty");
         }
+        Pet cat = cats.poll();
+        pets.remove(cat);
+        return cat;
     }
 
-    public void pollAll() {
-        while (!pets.isEmpty()) {
-            Pet firstPet = pets.remove(0);
-            if (firstPet instanceof Cat) {
-                cats.poll();
-            } else {
-                dogs.poll();
-            }
-            System.out.println(firstPet.getType());
+    public Pet pollAll() {
+        if (pets.isEmpty()) {
+            throw new RuntimeException("pet queue is empty");
         }
+        Pet pet = pets.remove(0);
+        if (pet instanceof Cat) {
+            cats.poll();
+        } else {
+            dogs.poll();
+        }
+        return pet;
     }
 
     public boolean isEmpty() {
