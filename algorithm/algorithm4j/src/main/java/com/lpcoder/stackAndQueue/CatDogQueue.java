@@ -30,6 +30,18 @@ public class CatDogQueue {
         System.out.println("---debug start---");
         System.out.println(queue.pets);
         System.out.println("---debug end---");
+
+        //queue.pollAll();
+
+        /*queue.pollDog();
+        System.out.println(queue.pets);*/
+
+        queue.pollCat();
+        System.out.println(queue.pets);
+
+        System.out.println(queue.isEmpty());
+        System.out.println(queue.isCatEmpty());
+        System.out.println(queue.isDogEmpty());
     }
 
     public void add(Pet pet) {
@@ -90,6 +102,13 @@ public class CatDogQueue {
 
         public String getType() {
             return type;
+        }
+
+        @Override
+        public String toString() {
+            return "Pet{" +
+                    "type='" + type + '\'' +
+                    '}';
         }
     }
 
