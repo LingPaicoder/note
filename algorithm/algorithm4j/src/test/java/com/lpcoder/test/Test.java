@@ -5,4 +5,6 @@ package com.lpcoder.test;
  * @date Created in 19-2-11
  */
 public class Test {
+    public static void main(String[] args) {
+    }
 }
