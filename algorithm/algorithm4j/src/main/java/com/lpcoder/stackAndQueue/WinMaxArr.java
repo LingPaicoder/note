@@ -15,8 +15,16 @@ public class WinMaxArr {
 
     public static void main(String[] args) {
         Integer[] arr = {4, 3, 5, 4, 3, 3, 6, 7};
+
         int w = 3;
         Arrays.asList(getWinMaxArr(arr, w)).forEach(System.out::println);
+        System.out.println("---");
+
+        int[] arr2 = {4, 3, 5, 4, 3, 3, 6, 7};
+        int[] rst = getMaxWindow(arr2, w);
+        for (int i = 0; i < rst.length; i++) {
+            System.out.println(rst[i]);
+        }
     }
 
     public static Integer[] getWinMaxArr(Integer[] arr, int w) {
@@ -50,6 +58,31 @@ public class WinMaxArr {
             max = w + min - 1;
         }
         return rst;
+    }
+
+    /**
+     * 另一种解法
+     */
+    public static int[] getMaxWindow(int[] arr, int w) {
+        if (arr == null || w < 1 || arr.length < w) {
+            return null;
+        }
+        LinkedList<Integer> qmax = new LinkedList<>();
+        int[] res = new int[arr.length - w + 1];
+        int index = 0;
+        for (int i = 0; i < arr.length; i++) {
+            while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[i]) {
+                qmax.pollLast();
+            }
+            qmax.addLast(i);
+            if (qmax.peekFirst() == i - w) {
+                qmax.pollFirst();
+            }
+            if (i >= w - 1) {
+                res[index++] = arr[qmax.peekFirst()];
+            }
+        }
+        return res;
     }
 
 }

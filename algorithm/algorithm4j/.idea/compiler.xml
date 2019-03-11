@@ -9,8 +9,5 @@
         <module name="algorithm4j" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="algorithm4j" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
