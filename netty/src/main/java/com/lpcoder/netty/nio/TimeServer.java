@@ -14,15 +14,9 @@ public class TimeServer {
 
     private static final int PORT = 8001;
 
-    public static class ReactorTask implements Runnable {
-
-        public void run() {
-
-        }
-    }
-
     public static void main(String[] args) throws Exception {
-
+        MultiplexerTimeServer timeServer = new MultiplexerTimeServer(PORT);
+        new Thread(timeServer, "NIO-MultiplexerTimeServer-001").start();
     }
 
 }
