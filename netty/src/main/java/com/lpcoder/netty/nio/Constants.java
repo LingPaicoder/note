@@ -6,6 +6,6 @@ package com.lpcoder.netty.nio;
  */
 public class Constants {
 
-    public static final int PORT = 8001;
+    public static final int PORT = 8002;
 
 }
