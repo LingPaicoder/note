@@ -97,26 +97,26 @@ public class TimeClientHandler implements Runnable {
                     // 连接失败，进程退出
                     System.exit(1);
                 }
-                if (key.isReadable()) {
-                    ByteBuffer readBuffer = ByteBuffer.allocate(1024);
-                    // 11. 异步读客户端请求消息到缓冲区
-                    // 12? 对ByteBuffer进行编解码，如果有半包消息接收缓冲区reset，继续读取后续的报文
-                    // 将解码成功的消息封装成Task，投递到业务线程池中，进行业务逻辑编排
-                    int readBytes = sc.read(readBuffer);
-                    if (readBytes > 0) {
-                        readBuffer.flip();
-                        byte[] bytes = new byte[readBuffer.remaining()];
-                        readBuffer.get(bytes);
-                        String body = new String(bytes, "UTF-8");
-                        System.out.println("Now is : " + body);
-                        this.stop = true;
-                    } else if (readBytes < 0) {
-                        // 对端链路关闭
-                        key.cancel();
-                        sc.close();
-                    } else {
-                        ; // 读到0字节，忽略
-                    }
+            }
+            if (key.isReadable()) {
+                ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                // 11. 异步读客户端请求消息到缓冲区
+                // 12? 对ByteBuffer进行编解码，如果有半包消息接收缓冲区reset，继续读取后续的报文
+                // 将解码成功的消息封装成Task，投递到业务线程池中，进行业务逻辑编排
+                int readBytes = sc.read(readBuffer);
+                if (readBytes > 0) {
+                    readBuffer.flip();
+                    byte[] bytes = new byte[readBuffer.remaining()];
+                    readBuffer.get(bytes);
+                    String body = new String(bytes, "UTF-8");
+                    System.out.println("Now is : " + body);
+                    this.stop = true;
+                } else if (readBytes < 0) {
+                    // 对端链路关闭
+                    key.cancel();
+                    sc.close();
+                } else {
+                    ; // 读到0字节，忽略
                 }
             }
         }
@@ -125,6 +125,7 @@ public class TimeClientHandler implements Runnable {
     private void doConnect() throws IOException {
         // 3. 异步连接服务端
         boolean connected = socketChannel.connect(new InetSocketAddress(host, port));
+        System.out.println("connected:" + connected);
         if (connected) {
             // 4. 判断是否连接成功，如果链接成功，则直接注册读状态位到多路复用器中，发送请求消息，读应答
             socketChannel.register(selector, SelectionKey.OP_READ);
