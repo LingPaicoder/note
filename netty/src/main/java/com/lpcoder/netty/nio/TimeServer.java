@@ -1,6 +1,6 @@
 package com.lpcoder.netty.nio;
 
-import static com.lpcoder.netty.nio.Constants.PORT;
+import static com.lpcoder.netty.Constants.SERVER_LISTENED_PORT;
 
 /**
  * @author liurenpeng
@@ -9,7 +9,7 @@ import static com.lpcoder.netty.nio.Constants.PORT;
 public class TimeServer {
 
     public static void main(String[] args) throws Exception {
-        new Thread(new MultiplexerTimeServer(PORT), "NIO-MultiplexerTimeServer-001").start();
+        new Thread(new MultiplexerTimeServer(SERVER_LISTENED_PORT), "NIO-MultiplexerTimeServer-001").start();
     }
 
 }

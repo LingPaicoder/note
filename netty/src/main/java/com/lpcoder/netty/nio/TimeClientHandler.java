@@ -9,6 +9,11 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
+import static com.lpcoder.netty.Constants.CAPACITY;
+import static com.lpcoder.netty.Constants.LOCAL_HOST_IP;
+import static com.lpcoder.netty.Constants.QUERY_TIME_ORDER_STR;
+import static com.lpcoder.netty.Constants.TIME_OUT;
+
 /**
  * @author liurenpeng
  * @date Created in 19-4-1
@@ -22,7 +27,7 @@ public class TimeClientHandler implements Runnable {
     private volatile boolean stop;
 
     public TimeClientHandler(String host, int port) {
-        this.host = host == null ? "127.0.0.1" : host;
+        this.host = host == null ? LOCAL_HOST_IP : host;
         this.port = port;
         try {
             // 1. 打开SocketChannel（绑定客户端本地地址）
@@ -48,10 +53,10 @@ public class TimeClientHandler implements Runnable {
         // 7. 多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
         while (!stop) {
             try {
-                selector.select(1000);
+                selector.select(TIME_OUT);
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 Iterator<SelectionKey> it = selectionKeys.iterator();
-                SelectionKey key = null;
+                SelectionKey key;
                 while (it.hasNext()) {
                     key = it.next();
                     it.remove();
@@ -99,7 +104,7 @@ public class TimeClientHandler implements Runnable {
                 }
             }
             if (key.isReadable()) {
-                ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                ByteBuffer readBuffer = ByteBuffer.allocate(CAPACITY);
                 // 11. 异步读客户端请求消息到缓冲区
                 // 12? 对ByteBuffer进行编解码，如果有半包消息接收缓冲区reset，继续读取后续的报文
                 // 将解码成功的消息封装成Task，投递到业务线程池中，进行业务逻辑编排
@@ -139,13 +144,13 @@ public class TimeClientHandler implements Runnable {
 
     private void doWrite(SocketChannel sc) throws IOException {
         // 13. 将POJO对象encode成ByteBuffer，调用SocketChannel的异步write接口，将消息异步发送给客户端
-        byte[] req = "QUERY TIME ORDER".getBytes();
+        byte[] req = QUERY_TIME_ORDER_STR.getBytes();
         ByteBuffer writeBuffer = ByteBuffer.allocate(req.length);
         writeBuffer.put(req);
         writeBuffer.flip();
         sc.write(writeBuffer);
         if (!writeBuffer.hasRemaining()) {
-            System.out.println("Send order 2 server succeed.");
+            System.out.println("Send order to server succeed.");
         }
     }
 

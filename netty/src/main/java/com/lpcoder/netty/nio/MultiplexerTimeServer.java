@@ -2,7 +2,6 @@ package com.lpcoder.netty.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -11,6 +10,11 @@ import java.nio.channels.SocketChannel;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
+
+import static com.lpcoder.netty.Constants.BACKLOG;
+import static com.lpcoder.netty.Constants.CAPACITY;
+import static com.lpcoder.netty.Constants.QUERY_TIME_ORDER_STR;
+import static com.lpcoder.netty.Constants.TIME_OUT;
 
 /**
  * @author liurenpeng
@@ -30,7 +34,7 @@ public class MultiplexerTimeServer implements Runnable {
             // 1.打开ServerSocketChannel，用于监听客户端的连接，它是所有客户端连接的父管道
             servChannel = ServerSocketChannel.open();
             // 2.绑定监听端口，设置连接为非阻塞模式
-            servChannel.socket().bind(new InetSocketAddress(port), 1024);
+            servChannel.socket().bind(new InetSocketAddress(port), BACKLOG);
             servChannel.configureBlocking(false);
             // 3.创建多路复用器
             selector = Selector.open();
@@ -51,7 +55,7 @@ public class MultiplexerTimeServer implements Runnable {
         while (!stop) {
             try {
                 // 5.多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
-                selector.select(1000);
+                selector.select(TIME_OUT);
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 Iterator<SelectionKey> it = selectionKeys.iterator();
                 SelectionKey key = null;
@@ -99,7 +103,7 @@ public class MultiplexerTimeServer implements Runnable {
             if (key.isReadable()) {
                 // Read the data
                 SocketChannel sc = (SocketChannel) key.channel();
-                ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                ByteBuffer readBuffer = ByteBuffer.allocate(CAPACITY);
                 // 9.异步读取客户端请求消息到缓冲区
                 // ??10.对ByteBuffer进行编解码，如果有半包消息指针reset，继续读取后续的报文，
                 //      将解码成功的消息封装成Task，投递到业务线程池中，进行业务逻辑编排
@@ -110,7 +114,7 @@ public class MultiplexerTimeServer implements Runnable {
                     readBuffer.get(bytes);
                     String body = new String(bytes, "UTF-8");
                     System.out.println("The time server receive order : " + body);
-                    String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ?
+                    String currentTime = QUERY_TIME_ORDER_STR.equalsIgnoreCase(body) ?
                             new Date().toString() : "BAD ORDER";
                     doWrite(sc, currentTime);
                 } else if (readBytes < 0) {
