@@ -9,5 +9,5 @@ import java.util.concurrent.locks.ReentrantLock
  */
 class CLUCache<K,V>(capacity:Int):LinkedHashMap<K,V>(capacity){
     private val lock : Lock = ReentrantLock()
-    
+
 }
