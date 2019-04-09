@@ -1,4 +1,4 @@
-package com.lpcoder.my.lru
+package com.lpcoder.demo.lru
 
 import java.util.concurrent.locks.Lock
 import java.util.concurrent.locks.ReentrantLock
@@ -10,4 +10,8 @@ import java.util.concurrent.locks.ReentrantLock
 class CLUCache<K,V>(capacity:Int):LinkedHashMap<K,V>(capacity){
     private val lock : Lock = ReentrantLock()
 
+}
+
+fun main(args: Array<String>) {
+    print("abc")
 }
