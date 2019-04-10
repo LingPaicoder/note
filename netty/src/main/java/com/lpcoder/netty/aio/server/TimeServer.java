@@ -1,4 +1,4 @@
-package com.lpcoder.netty.aio;
+package com.lpcoder.netty.aio.server;
 
 import com.lpcoder.netty.Constants;
 
