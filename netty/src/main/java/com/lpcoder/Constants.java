@@ -1,4 +1,4 @@
-package com.lpcoder.netty;
+package com.lpcoder;
 
 /**
  * @author liurenpeng

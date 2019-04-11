@@ -1,6 +1,6 @@
-package com.lpcoder.netty.aio.client;
+package com.lpcoder.native4j.aio.client;
 
-import com.lpcoder.netty.Constants;
+import com.lpcoder.Constants;
 
 /**
  * @author liurenpeng
