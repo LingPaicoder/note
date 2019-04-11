@@ -1,4 +1,4 @@
-package com.lpcoder.netty.nio;
+package com.lpcoder.native4j.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -9,10 +9,10 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-import static com.lpcoder.netty.Constants.CAPACITY;
-import static com.lpcoder.netty.Constants.LOCAL_HOST_IP;
-import static com.lpcoder.netty.Constants.QUERY_TIME_ORDER_STR;
-import static com.lpcoder.netty.Constants.TIME_OUT;
+import static com.lpcoder.Constants.CAPACITY;
+import static com.lpcoder.Constants.LOCAL_HOST_IP;
+import static com.lpcoder.Constants.QUERY_TIME_ORDER_STR;
+import static com.lpcoder.Constants.TIME_OUT;
 
 /**
  * @author liurenpeng

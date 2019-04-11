@@ -1,6 +1,6 @@
-package com.lpcoder.netty.nio;
+package com.lpcoder.native4j.nio;
 
-import static com.lpcoder.netty.Constants.SERVER_LISTENED_PORT;
+import static com.lpcoder.Constants.SERVER_LISTENED_PORT;
 
 /**
  * @author liurenpeng
