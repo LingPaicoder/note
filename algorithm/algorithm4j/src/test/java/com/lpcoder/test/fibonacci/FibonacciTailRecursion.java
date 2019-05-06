@@ -6,7 +6,7 @@ package com.lpcoder.test.fibonacci;
  * @author liurenpeng
  * @date Created in 19-5-6
  */
-public class TailRecursionFibonacci {
+public class FibonacciTailRecursion {
 
     public static void main(String[] args) {
         System.out.println(solution(10, 0, 1));
