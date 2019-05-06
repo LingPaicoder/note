@@ -13,6 +13,36 @@ public class PreOrderTraversalSimulationStack {
 
     public static void main(String[] args) {
         solution(BiTree.S_INSTANCE.root);
+        System.out.println("---");
+        test(BiTree.S_INSTANCE.root);
+    }
+
+    /*void PreorderNonRecursive(Bitree root){
+        stack stk;
+        stk.push(root);
+        while(!stk.empty()){
+            p = stk.top();
+            visit(p);
+            stk.pop();
+            if(p.rchild) stk.push(stk.rchild);
+            if(p.lchild) stk.push(stk.lchild);
+        }
+    }*/
+
+    private static void test(BiTNode root) {
+        Stack<BiTNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            BiTNode node = stack.peek();
+            System.out.print(node.ele);
+            stack.pop();
+            if (null != node.right) {
+                stack.push(node.right);
+            }
+            if (null != node.left) {
+                stack.push(node.left);
+            }
+        }
     }
 
     private static void solution(BiTNode root) {
