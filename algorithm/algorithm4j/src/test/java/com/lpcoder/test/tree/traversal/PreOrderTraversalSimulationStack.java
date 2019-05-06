@@ -19,9 +19,10 @@ public class PreOrderTraversalSimulationStack {
         if (null == root) {
             return;
         }
-        STACK.push(new Frame(root, FrameStatus.UN_HANDLE));
-        while (!STACK.isEmpty()) {
-            Frame frame = STACK.peek();
+        Stack<Frame> stack = new Stack<>();
+        stack.push(new Frame(root, FrameStatus.UN_HANDLE));
+        while (!stack.isEmpty()) {
+            Frame frame = stack.peek();
             switch (frame.status) {
                 case UN_HANDLE:
                     System.out.print(frame.node.ele);
@@ -29,24 +30,22 @@ public class PreOrderTraversalSimulationStack {
                     break;
                 case HANDLED:
                     if (null != frame.node.left) {
-                        STACK.push(new Frame(frame.node.left, FrameStatus.UN_HANDLE));
+                        stack.push(new Frame(frame.node.left, FrameStatus.UN_HANDLE));
                     }
                     frame.status = FrameStatus.LEFT_HANDLED;
                     break;
                 case LEFT_HANDLED:
                     if (null != frame.node.right) {
-                        STACK.push(new Frame(frame.node.right, FrameStatus.UN_HANDLE));
+                        stack.push(new Frame(frame.node.right, FrameStatus.UN_HANDLE));
                     }
                     frame.status = FrameStatus.RIGHT_HANDLED;
                     break;
                 case RIGHT_HANDLED:
-                    STACK.pop();
+                    stack.pop();
                     break;
             }
         }
     }
-
-    private static final Stack<Frame> STACK = new Stack<>();
 
     /**
      * 栈帧
