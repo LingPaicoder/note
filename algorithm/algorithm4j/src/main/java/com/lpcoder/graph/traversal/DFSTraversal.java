@@ -13,7 +13,7 @@ import java.util.Map;
 public class DFSTraversal {
 
     public static void main(String[] args) {
-        // todo 
+        // todo
         dfsTraversal(Graph.INSTANCE);
     }
 

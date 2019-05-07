@@ -1,4 +1,4 @@
-package com.lpcoder.stackAndQueue;
+package com.lpcoder.guide.stackAndQueue;
 
 import java.util.Arrays;
 import java.util.Collections;
