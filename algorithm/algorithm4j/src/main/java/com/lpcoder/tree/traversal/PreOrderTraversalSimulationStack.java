@@ -1,7 +1,7 @@
 package com.lpcoder.tree.traversal;
 
 import com.lpcoder.tree.BiTNode;
-import com.lpcoder.tree.BiTreeStrEle;
+import com.lpcoder.tree.BiTreeOfStrEle;
 
 import java.util.Stack;
 
@@ -12,9 +12,9 @@ import java.util.Stack;
 public class PreOrderTraversalSimulationStack {
 
     public static void main(String[] args) {
-        solution(BiTreeStrEle.S_INSTANCE.root);
+        solution(BiTreeOfStrEle.S_INSTANCE.root);
         System.out.println("---");
-        test(BiTreeStrEle.S_INSTANCE.root);
+        test(BiTreeOfStrEle.S_INSTANCE.root);
     }
 
     /*void PreorderNonRecursive(Bitree root){

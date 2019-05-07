@@ -10,7 +10,7 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] arr = new int[]{0, 1, 16, 24, 35, 47, 59, 62, 73, 88, 99};
-        System.out.println(binarySearch(arr, 1));
+        System.out.println(binarySearch(arr, 97));
     }
 
     private static int binarySearch(int[] arr, int key) {

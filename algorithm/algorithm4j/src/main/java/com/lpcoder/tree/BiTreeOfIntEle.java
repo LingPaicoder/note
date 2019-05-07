@@ -7,17 +7,17 @@ import lombok.Data;
  * @date Created in 19-5-6
  */
 @Data
-public class BiTreeIntEle {
+public class BiTreeOfIntEle {
 
     public final BiTNode<Integer> root;
 
-    public BiTreeIntEle(BiTNode<Integer> root) {
+    public BiTreeOfIntEle(BiTNode<Integer> root) {
         this.root = root;
     }
 
-    public static final BiTreeIntEle S_INSTANCE = getStandardInstance();
+    public static final BiTreeOfIntEle S_INSTANCE = getStandardInstance();
 
-    private static BiTreeIntEle getStandardInstance() {
+    private static BiTreeOfIntEle getStandardInstance() {
         BiTNode<Integer> node62 = new BiTNode<>(62);
         BiTNode<Integer> node58 = new BiTNode<>(58);
         BiTNode<Integer> node88 = new BiTNode<>(88);
@@ -44,6 +44,6 @@ public class BiTreeIntEle {
 
         node99.left = node93;
 
-        return new BiTreeIntEle(node62);
+        return new BiTreeOfIntEle(node62);
     }
 }

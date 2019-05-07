@@ -1,7 +1,7 @@
 package com.lpcoder.tree.traversal;
 
 import com.lpcoder.tree.BiTNode;
-import com.lpcoder.tree.BiTreeStrEle;
+import com.lpcoder.tree.BiTreeOfStrEle;
 
 /**
  * 前序遍历 根左右
@@ -12,7 +12,7 @@ import com.lpcoder.tree.BiTreeStrEle;
 public class PreOrderTraversal {
 
     public static void main(String[] args) {
-        preOrderTraversal(BiTreeStrEle.S_INSTANCE.root);
+        preOrderTraversal(BiTreeOfStrEle.S_INSTANCE.root);
     }
 
     private static void preOrderTraversal(BiTNode root) {
