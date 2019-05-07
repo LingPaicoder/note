@@ -1,6 +1,10 @@
 package com.lpcoder.sort;
 
+import static com.lpcoder.CommonUtil.swap;
+
 /**
+ * 快速排序
+ *
  * @author liurenpeng
  * @date Created in 19-5-8
  */
@@ -39,10 +43,6 @@ public class FastSort {
         return low;
     }
 
-    private static void swap(int[] arr, int i, int j) {
-        int tmp = arr[j];
-        arr[j] = arr[i];
-        arr[i] = tmp;
-    }
+
 
 }
