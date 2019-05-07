@@ -1,4 +1,4 @@
-package com.lpcoder.test.fibonacci;
+package com.lpcoder.fibonacci;
 
 import java.util.HashMap;
 

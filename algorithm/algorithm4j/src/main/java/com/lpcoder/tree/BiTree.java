@@ -1,4 +1,4 @@
-package com.lpcoder.test.tree;
+package com.lpcoder.tree;
 
 import lombok.Data;
 

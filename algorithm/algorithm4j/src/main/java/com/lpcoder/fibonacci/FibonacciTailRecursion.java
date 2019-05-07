@@ -1,4 +1,4 @@
-package com.lpcoder.test.fibonacci;
+package com.lpcoder.fibonacci;
 
 /**
  * 注意Java并不支持尾递归优化，这里只是表达尾递归的思路

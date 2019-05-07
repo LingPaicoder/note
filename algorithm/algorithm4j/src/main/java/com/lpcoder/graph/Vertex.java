@@ -1,4 +1,4 @@
-package com.lpcoder.test.graph;
+package com.lpcoder.graph;
 
 /**
  * @author liurenpeng

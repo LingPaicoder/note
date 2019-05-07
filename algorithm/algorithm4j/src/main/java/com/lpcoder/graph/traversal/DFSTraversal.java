@@ -1,7 +1,7 @@
-package com.lpcoder.test.graph.traversal;
+package com.lpcoder.graph.traversal;
 
-import com.lpcoder.test.graph.Graph;
-import com.lpcoder.test.graph.Vertex;
+import com.lpcoder.graph.Graph;
+import com.lpcoder.graph.Vertex;
 
 import java.util.HashMap;
 import java.util.Map;

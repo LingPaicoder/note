@@ -1,7 +1,7 @@
-package com.lpcoder.test.tree.traversal;
+package com.lpcoder.tree.traversal;
 
-import com.lpcoder.test.tree.BiTNode;
-import com.lpcoder.test.tree.BiTree;
+import com.lpcoder.tree.BiTNode;
+import com.lpcoder.tree.BiTree;
 
 /**
  * 前序遍历 根左右
