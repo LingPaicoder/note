@@ -7,12 +7,12 @@ import lombok.Data;
  * @date Created in 19-5-6
  */
 @Data
-public class BiTNode {
-    public final String ele;
+public class BiTNode<E> {
+    public final E ele;
     public BiTNode left;
     public BiTNode right;
 
-    public BiTNode(String ele) {
+    public BiTNode(E ele) {
         this.ele = ele;
     }
 }
