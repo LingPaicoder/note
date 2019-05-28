@@ -56,10 +56,12 @@ public class CompleteBinaryTreeNodeNum {
             boolean haveNode = haveNode(root, pathH, biForm(pathH, mid));
             if (!haveNode) {
                 if (haveNode(root, pathH, biForm(pathH, mid - 1))) {
+                    // 当前节点不存在，上个节点存在，返回上个节点标号
                     return mid - 1;
                 }
             } else {
                 if (!haveNode(root, pathH, biForm(pathH, mid + 1))) {
+                    // 当前节点存在，下个节点不存在，返回当前节点标号
                     return mid;
                 }
             }
