@@ -36,11 +36,11 @@ public class CompleteBinaryTreeNodeNum {
             return (1 << leftH) - 1;
         }
 
-        // 最底层最大节点数
+        // 底层最大节点数
         int lowestMaxNodeNum = 1 << (leftH - 1);
         // 非底层节点数
         int notLowestNodeNum = lowestMaxNodeNum - 1;
-        // 最底层节点数
+        // 底层节点数
         int lowestNodeNum = binarySearchBorder(root, leftH - 1, lowestMaxNodeNum);
         return notLowestNodeNum + lowestNodeNum;
     }
