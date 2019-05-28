@@ -53,14 +53,14 @@ public class CompleteBinaryTreeNodeNum {
         int mid;
         while (left <= right) {
             mid = (left + right) / 2;
-            boolean haveNode = haveNode(root, pathH, biForm(pathH, mid));
+            boolean haveNode = haveNode(root, biForm(pathH, mid));
             if (!haveNode) {
-                if (haveNode(root, pathH, biForm(pathH, mid - 1))) {
+                if (haveNode(root, biForm(pathH, mid - 1))) {
                     // 当前节点不存在，上个节点存在，返回上个节点标号
                     return mid - 1;
                 }
             } else {
-                if (!haveNode(root, pathH, biForm(pathH, mid + 1))) {
+                if (!haveNode(root, biForm(pathH, mid + 1))) {
                     // 当前节点存在，下个节点不存在，返回当前节点标号
                     return mid;
                 }
@@ -89,7 +89,7 @@ public class CompleteBinaryTreeNodeNum {
         return rst;
     }
 
-    private static boolean haveNode(TreeNode root, int pathH, char[] biCharArr) {
+    private static boolean haveNode(TreeNode root, char[] biCharArr) {
         TreeNode target = root;
         for (char c : biCharArr) {
             target = c == '0' ? target.left : target.right;
